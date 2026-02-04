@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CheckCircle, Sparkles, Clock, Zap, ArrowRight, Menu, X, PlayCircle, Users, Award, Rocket } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { Testimonial } from './Testimonial';
@@ -26,6 +26,16 @@ export default function PremiumWebinarLanding() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isModalOpen]);
 
   const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK";
 
@@ -129,7 +139,7 @@ export default function PremiumWebinarLanding() {
               className="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold px-8 py-4 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
               </svg>
               Join WhatsApp Community
               <ArrowRight className="w-5 h-5" />
@@ -170,9 +180,12 @@ export default function PremiumWebinarLanding() {
               <a href="#about" className="text-gray-300 hover:text-white transition-colors font-medium">About</a>
               <a href="#details" className="text-gray-300 hover:text-white transition-colors font-medium">Details</a>
               <a href="#testimonials" className="text-gray-300 hover:text-white transition-colors font-medium">Reviews</a>
-              <a href="#register" className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-6 py-3 rounded-xl transition-all shadow-lg shadow-blue-500/50 font-semibold">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-6 py-3 rounded-xl transition-all shadow-lg shadow-blue-500/50 font-semibold"
+              >
                 Register Free
-              </a>
+              </button>
             </div>
 
             <button
@@ -190,9 +203,15 @@ export default function PremiumWebinarLanding() {
             <a href="#about" className="block text-gray-300 hover:text-white py-3 font-medium">About</a>
             <a href="#details" className="block text-gray-300 hover:text-white py-3 font-medium">Details</a>
             <a href="#testimonials" className="block text-gray-300 hover:text-white py-3 font-medium">Reviews</a>
-            <a href="#register" className="block bg-gradient-to-r from-blue-600 to-blue-500 text-white text-center px-6 py-3 rounded-xl mt-4 font-semibold">
+            <button
+              onClick={() => {
+                setIsModalOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white text-center px-6 py-3 rounded-xl mt-4 font-semibold"
+            >
               Register Free
-            </a>
+            </button>
           </div>
         )}
       </nav>
@@ -200,171 +219,66 @@ export default function PremiumWebinarLanding() {
       {/* Hero Section - Premium Design */}
       <div className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Column - Content */}
-            <div className="text-white space-y-8 relative z-10">
-              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-5 py-2.5 text-sm backdrop-blur-sm">
-                <Zap className="w-4 h-4 text-blue-400" />
-                <span className="text-blue-300 font-medium">Free Live Workshop</span>
-                <span className="bg-blue-500/20 px-2 py-0.5 rounded-full text-xs text-blue-300">Limited Seats</span>
-              </div>
-
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
-                <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                  AI Won&apos;t Replace You.
-                </span>
-                <span className="block mt-3 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  But Builders Who Ship Will.
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
-                Discover how experienced engineers use AI + Automation to build end-to-end systems that actually ship to production.
-              </p>
-
-              {/* Key Points with Icons */}
-              <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                {[
-                  { icon: <Rocket className="w-5 h-5" />, text: 'Idea → Production with AI' },
-                  { icon: <Zap className="w-5 h-5" />, text: 'Real automation workflows' },
-                  { icon: <PlayCircle className="w-5 h-5" />, text: 'Vibe coding + Agentic AI' },
-                  { icon: <Award className="w-5 h-5" />, text: 'Ship systems, not demos' }
-                ].map((point, index) => (
-                  <div key={index} className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-white/20 transition-colors">
-                    <div className="text-blue-400 flex-shrink-0">
-                      {point.icon}
-                    </div>
-                    <span className="text-gray-200 font-medium text-sm">{point.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-                <div className="text-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">60min</div>
-                  <div className="text-sm text-gray-400 mt-1 font-medium">Live Session</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Free</div>
-                  <div className="text-sm text-gray-400 mt-1 font-medium">No Cost</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Live</div>
-                  <div className="text-sm text-gray-400 mt-1 font-medium">Interactive</div>
-                </div>
-              </div>
+          {/* Center Content for more focus */}
+          <div className="text-white space-y-8 relative z-10 lg:col-span-2 text-center flex flex-col items-center">
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-5 py-2.5 text-sm backdrop-blur-sm">
+              <Zap className="w-4 h-4 text-blue-400" />
+              <span className="text-blue-300 font-medium">Free Live Workshop</span>
+              <span className="bg-blue-500/20 px-2 py-0.5 rounded-full text-xs text-blue-300">Limited Seats</span>
             </div>
 
-            {/* Right Column - Registration Form */}
-            <div id="register" className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-3xl" />
-              <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-10 border border-white/20">
-                <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    <Users className="w-4 h-4" />
-                    <span>47 seats left</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight max-w-4xl">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+                AI Won&apos;t Replace You.
+              </span>
+              <span className="block mt-3 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                But Builders Who Ship Will.
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
+              Discover how experienced engineers use AI + Automation to build end-to-end systems that actually ship to production.
+            </p>
+
+            {/* Action Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-2xl transition-all transform hover:scale-105 shadow-2xl shadow-blue-500/40 text-xl"
+            >
+              Reserve My Free Seat
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* Key Points with Icons */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-8 w-full">
+              {[
+                { icon: <Rocket className="w-5 h-5" />, text: 'Idea → Production with AI' },
+                { icon: <Zap className="w-5 h-5" />, text: 'Real automation workflows' },
+                { icon: <PlayCircle className="w-5 h-5" />, text: 'Vibe coding + Agentic AI' },
+                { icon: <Award className="w-5 h-5" />, text: 'Ship systems, not demos' }
+              ].map((point, index) => (
+                <div key={index} className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-white/20 transition-colors">
+                  <div className="text-blue-400 flex-shrink-0">
+                    {point.icon}
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                    Reserve Your Seat
-                  </h2>
-                  <p className="text-gray-600">
-                    Join builders shipping real AI systems
-                  </p>
+                  <span className="text-gray-200 font-medium text-sm">{point.text}</span>
                 </div>
+              ))}
+            </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-bold text-gray-800 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${
-                        errors.name ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="Enter your full name"
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-sm mt-2 font-medium">{errors.name}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-gray-800 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${
-                        errors.email ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="your.email@example.com"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-2 font-medium">{errors.email}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-bold text-gray-800 mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${
-                        errors.phone ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="10-digit mobile number"
-                    />
-                    {errors.phone && (
-                      <p className="text-red-500 text-sm mt-2 font-medium">{errors.phone}</p>
-                    )}
-                  </div>
-
-                  {errors.submit && (
-                    <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4">
-                      <p className="text-red-600 text-sm font-medium">{errors.submit}</p>
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 disabled:from-blue-400 disabled:to-blue-400 text-white font-bold py-5 rounded-xl transition-all transform hover:scale-[1.02] disabled:scale-100 flex items-center justify-center gap-3 shadow-lg shadow-blue-500/50 text-lg"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Registering...
-                      </>
-                    ) : (
-                      <>
-                        Register for Free
-                        <ArrowRight className="w-5 h-5" />
-                      </>
-                    )}
-                  </button>
-
-                  <div className="flex items-center justify-center gap-2 pt-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
-                    <p className="text-xs text-gray-600 font-medium">
-                      Instant WhatsApp community access
-                    </p>
-                  </div>
-                </form>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-12 pt-12 border-t border-white/10 w-full max-w-3xl">
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">60min</div>
+                <div className="text-sm text-gray-400 mt-1 font-medium text-center">Live Session</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Free</div>
+                <div className="text-sm text-gray-400 mt-1 font-medium text-center">No Cost</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Live</div>
+                <div className="text-sm text-gray-400 mt-1 font-medium text-center">Interactive</div>
               </div>
             </div>
           </div>
@@ -427,7 +341,7 @@ export default function PremiumWebinarLanding() {
               }
             ].map((item, index) => (
               <div key={index} className="group relative bg-slate-800/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-300 hover:transform hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300" style={{backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))`}} />
+                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300" style={{ backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))` }} />
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${item.gradient} mb-5`}>
                   <div className="text-white">{item.icon}</div>
                 </div>
@@ -473,13 +387,13 @@ export default function PremiumWebinarLanding() {
           </div>
 
           <div className="mt-16 text-center">
-            <a
-              href="#register"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-xl transition-all transform hover:scale-105 shadow-lg shadow-blue-500/50 text-lg"
             >
               Claim Your Free Seat
               <ArrowRight className="w-6 h-6" />
-            </a>
+            </button>
             <p className="text-gray-400 text-sm mt-4">Limited seats • No credit card required</p>
           </div>
         </div>
@@ -501,6 +415,126 @@ export default function PremiumWebinarLanding() {
           </div>
         </div>
       </footer>
+      {/* Registration Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+            onClick={() => setIsModalOpen(false)}
+          />
+          <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-10 border border-white/20 w-full max-w-lg animate-in fade-in zoom-in duration-300">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <Users className="w-4 h-4" />
+                <span>47 seats left</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                Reserve Your Seat
+              </h2>
+              <p className="text-gray-600">
+                Join builders shipping real AI systems
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="name" className="block text-sm font-bold text-gray-800 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${errors.name ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  placeholder="Enter your full name"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-2 font-medium">{errors.name}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-bold text-gray-800 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${errors.email ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  placeholder="your.email@example.com"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-2 font-medium">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-bold text-gray-800 mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${errors.phone ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  placeholder="10-digit mobile number"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-2 font-medium">{errors.phone}</p>
+                )}
+              </div>
+
+              {errors.submit && (
+                <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4">
+                  <p className="text-red-600 text-sm font-medium">{errors.submit}</p>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 disabled:from-blue-400 disabled:to-blue-400 text-white font-bold py-5 rounded-xl transition-all transform hover:scale-[1.02] disabled:scale-100 flex items-center justify-center gap-3 shadow-lg shadow-blue-500/50 text-lg"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Registering...
+                  </>
+                ) : (
+                  <>
+                    Register for Free
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <CheckCircle className="w-4 h-4 text-green-600" />
+                <p className="text-xs text-gray-600 font-medium">
+                  Instant WhatsApp community access
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
