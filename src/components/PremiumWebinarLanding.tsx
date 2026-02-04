@@ -43,6 +43,45 @@ export default function PremiumWebinarLanding() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number>(3 * 60 * 60);
+
+  // Timer persistence and countdown
+  useEffect(() => {
+    const STORAGE_KEY = 'webinar_countdown_target';
+    const now = Math.floor(Date.now() / 1000);
+    const existingTarget = localStorage.getItem(STORAGE_KEY);
+
+    let targetTime: number;
+
+    if (existingTarget) {
+      targetTime = parseInt(existingTarget, 10);
+      // If target time is in the past, reset it for the purpose of this demo/landing
+      if (targetTime < now) {
+        targetTime = now + 3 * 60 * 60;
+        localStorage.setItem(STORAGE_KEY, targetTime.toString());
+      }
+    } else {
+      targetTime = now + 3 * 60 * 60;
+      localStorage.setItem(STORAGE_KEY, targetTime.toString());
+    }
+
+    const updateTimer = () => {
+      const currentTime = Math.floor(Date.now() / 1000);
+      const remaining = Math.max(0, targetTime - currentTime);
+      setTimeLeft(remaining);
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -585,6 +624,40 @@ export default function PremiumWebinarLanding() {
                 </p>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Sticky Footer */}
+      {!isRegistered && (
+        <div className="fixed bottom-0 left-0 right-0 z-[90] bg-slate-950/80 backdrop-blur-xl border-t border-white/10 p-4 md:p-5 animate-in slide-in-from-bottom duration-500">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 md:gap-8">
+              <div className="flex flex-col">
+                <p className="text-blue-400 text-xs md:text-sm font-bold uppercase tracking-wider mb-1">
+                  Offer Expires Soon
+                </p>
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-white animate-pulse" />
+                  <span className="text-2xl md:text-3xl font-mono font-bold text-white tracking-wider">
+                    {formatTime(timeLeft)}
+                  </span>
+                </div>
+              </div>
+              <div className="hidden lg:block h-10 w-px bg-white/10" />
+              <p className="hidden lg:block text-gray-400 text-sm max-w-[200px] leading-tight">
+                Join 500+ builders in this intensive AI mastery session.
+              </p>
+            </div>
+
+            <div className="w-full md:w-auto">
+              <GradientButton
+                onClick={() => setIsModalOpen(true)}
+                className="w-full md:w-[240px] h-[56px] text-lg"
+              >
+                Register Free
+              </GradientButton>
+            </div>
           </div>
         </div>
       )}
