@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { Building2, Award, Users, CheckCircle2 } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 const stats = [
     { label: 'Experience', value: '18+ Years', icon: Award },
-    { label: 'Credentials', value: 'PMP, AWS Architect', icon: Building2 },
+    { label: 'Credentials', value: '', images: ['/images/aws-certified.png', '/images/pmp-certified.png'] },
     { label: 'Alumni Status', value: '', image: '/images/iiitb-alumni.png' },
     { label: 'Expertise', value: '', image: '/images/gemini-certified-2.png' },
 ];
@@ -24,7 +24,7 @@ export const AboutTrainer = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative"
+                        className="relative max-w-sm mx-auto lg:max-w-none lg:mx-0 lg:w-[85%]"
                     >
                         <div className="aspect-[4/5] rounded-3xl overflow-hidden relative group">
                             <div className="absolute inset-0 bg-slate-800 animate-pulse" /> {/* Placeholder background */}
@@ -74,27 +74,41 @@ export const AboutTrainer = () => {
 
                             <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
                                 <p>
-                                    With over 18 years of experience in the tech industry, I've led engineering teams at global giants like Amazon, Delhivery, and Western Union.
+                                    I don't just teach theory—I decode the DNA of scalable systems and high-impact leadership. With 18+ years building at giants like <strong>Amazon, Delhivery, and Western Union</strong>, I've seen exactly what keeps engineers stuck and what catapults them to leadership.
                                 </p>
                                 <p>
-                                    My passion lies in empowering developers and engineering leaders to unlock their full potential. I specialize in System Design and Leadership, helping professionals navigate the complexities of modern software engineering.
+                                    My mission is simple: <strong>Help you escape tutorial hell and start building systems that actually ship.</strong> Whether it's mastering System Design or navigating Engineering Management, I'll show you how the top 1% operate.
                                 </p>
                             </div>
                         </motion.div>
 
                         {/* Key Data Points (Staggered Grid) */}
                         <div className="grid grid-cols-2 gap-4">
-                            {stats.map((stat, index) => (
+                            {stats.map((stat: any, index) => (
                                 <motion.div
                                     key={stat.label}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="bg-slate-800/50 border border-white/5 p-4 rounded-2xl hover:bg-slate-800/80 transition-colors group"
+                                    className="bg-slate-800/50 border border-white/5 p-4 rounded-2xl hover:bg-slate-800/80 transition-colors group flex flex-col items-center justify-center text-center h-[140px]"
                                 >
-                                    {stat.image ? (
-                                        <div className="h-full flex flex-col items-center justify-center">
+                                    {stat.images ? (
+                                        <div className="flex flex-col items-center justify-center h-full">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                {stat.images.map((img: string, i: number) => (
+                                                    <img
+                                                        key={i}
+                                                        src={img}
+                                                        alt={stat.label}
+                                                        className="w-auto h-10 object-contain"
+                                                    />
+                                                ))}
+                                            </div>
+                                            <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                                        </div>
+                                    ) : stat.image ? (
+                                        <div className="flex flex-col items-center justify-center h-full">
                                             <img
                                                 src={stat.image}
                                                 alt={stat.label}
