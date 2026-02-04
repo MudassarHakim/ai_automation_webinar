@@ -282,7 +282,7 @@ export default function PremiumWebinarLanding() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-12 pt-12 border-t border-white/10 w-full max-w-3xl">
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">60min</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">120min</div>
                 <div className="text-sm text-gray-400 mt-1 font-medium text-center">Live Session</div>
               </div>
               <div className="text-center">
@@ -304,7 +304,7 @@ export default function PremiumWebinarLanding() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-5 py-2 text-sm backdrop-blur-sm mb-6">
               <Sparkles className="w-4 h-4 text-blue-400" />
-              <span className="text-blue-300 font-medium">60-Minute Intensive</span>
+              <span className="text-blue-300 font-medium">120-Minute Intensive</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               What You&apos;ll Discover
@@ -437,17 +437,11 @@ export default function PremiumWebinarLanding() {
             onClick={() => setIsModalOpen(false)}
           />
           <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-10 border border-white/20 w-full max-w-lg animate-in fade-in zoom-in duration-300">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
 
             <div className="mb-8">
               <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
                 <Users className="w-4 h-4" />
-                <span>47 seats left</span>
+                <span>last few seats remaining</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 Reserve Your Seat
