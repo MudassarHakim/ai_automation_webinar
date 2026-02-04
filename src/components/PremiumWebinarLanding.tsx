@@ -16,6 +16,7 @@ import {
 import { supabase } from '../lib/supabase';
 import { Testimonial } from './Testimonial';
 import GradientButton from './ui/GradientButton';
+import { SocialProofPopup } from './SocialProofPopup';
 
 interface FormData {
   name: string;
@@ -661,6 +662,9 @@ export default function PremiumWebinarLanding() {
           </div>
         </div>
       )}
+
+      {/* Social Proof Popup */}
+      <SocialProofPopup />
     </div>
   );
 }
