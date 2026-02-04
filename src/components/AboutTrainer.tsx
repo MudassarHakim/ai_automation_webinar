@@ -2,12 +2,14 @@ import { TrainerCarousel } from './TrainerCarousel';
 
 const items = [
     { type: 'image', content: '/images/trainer-new.png', label: 'Mudassar Hakim' },
-    { type: 'credential', content: ['/images/aws-certified.png', '/images/pmp-certified.png'], label: 'Certified Architect & PMP' },
+    { type: 'stat', content: '/images/aws-certified.png', label: 'AWS Architect' },
+    { type: 'stat', content: '/images/pmp-certified.png', label: 'PMP Certified' },
     { type: 'stat', content: '/images/iiitb-alumni.png', label: 'IIITB Alumni' },
     { type: 'stat', content: '/images/gemini-certified-2.png', label: 'Gemini Expert' },
     // Repeat for infinite feel since we only have 4
     { type: 'image', content: '/images/trainer-new.png', label: 'Mudassar Hakim' },
-    { type: 'credential', content: ['/images/aws-certified.png', '/images/pmp-certified.png'], label: 'Certified Architect & PMP' },
+    { type: 'stat', content: '/images/aws-certified.png', label: 'AWS Architect' },
+    { type: 'stat', content: '/images/pmp-certified.png', label: 'PMP Certified' },
     { type: 'stat', content: '/images/iiitb-alumni.png', label: 'IIITB Alumni' },
     { type: 'stat', content: '/images/gemini-certified-2.png', label: 'Gemini Expert' },
 ] as const;
