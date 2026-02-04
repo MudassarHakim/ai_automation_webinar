@@ -469,8 +469,8 @@ export default function PremiumWebinarLanding() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w - full px - 4 py - 4 border - 2 rounded - xl focus: ring - 2 focus: ring - blue - 500 focus: border - transparent outline - none transition - all bg - white ${errors.name ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
-                    } `}
+                  className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white font-medium text-gray-900 ${errors.name ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
+                    }`}
                   placeholder="Enter your full name"
                 />
                 {errors.name && (
@@ -488,8 +488,8 @@ export default function PremiumWebinarLanding() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w - full px - 4 py - 4 border - 2 rounded - xl focus: ring - 2 focus: ring - blue - 500 focus: border - transparent outline - none transition - all bg - white ${errors.email ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
-                    } `}
+                  className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white font-medium text-gray-900 ${errors.email ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
+                    }`}
                   placeholder="your.email@example.com"
                 />
                 {errors.email && (
@@ -508,7 +508,7 @@ export default function PremiumWebinarLanding() {
                       name="countryCode"
                       value={formData.countryCode}
                       onChange={handleChange}
-                      className="w-full px-3 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none appearance-none bg-white font-medium text-gray-700"
+                      className="w-full pl-4 pr-10 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none appearance-none bg-white font-medium text-gray-900 hover:border-gray-300 transition-all cursor-pointer"
                     >
                       <option value="+91">+91 (IN)</option>
                       <option value="+1">+1 (US)</option>
@@ -529,7 +529,7 @@ export default function PremiumWebinarLanding() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`flex-1 px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white font-medium ${errors.phone ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
+                    className={`flex-1 px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white font-medium text-gray-900 ${errors.phone ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'
                       }`}
                     placeholder="10-digit mobile number"
                   />
