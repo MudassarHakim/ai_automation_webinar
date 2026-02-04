@@ -3,9 +3,9 @@ import { Building2, Award, Users, CheckCircle2 } from 'lucide-react';
 
 const stats = [
     { label: 'Experience', value: '18+ Years', icon: Award },
-    { label: 'Current Role', value: 'SDM III @ Amazon', icon: Building2 },
-    { label: 'Mentorship', value: 'Top Rated Mentor', icon: Users },
-    { label: 'Expertise', value: 'System Design', icon: CheckCircle2 },
+    { label: 'Credentials', value: 'PMP, AWS Architect', icon: Building2 },
+    { label: 'Alumni Status', value: '', image: '/images/iiitb-alumni.png' },
+    { label: 'Expertise', value: '', image: '/images/gemini-certified-2.png' },
 ];
 
 export const AboutTrainer = () => {
@@ -30,7 +30,7 @@ export const AboutTrainer = () => {
                             <div className="absolute inset-0 bg-slate-800 animate-pulse" /> {/* Placeholder background */}
                             {/* Note: Replace src with actual image if available, else user can upload */}
                             <img
-                                src="https://media.licdn.com/dms/image/v2/D5603AQHP-MdcC8u8Kg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718216336338?e=1743638400&v=beta&t=H3-d-M42ZJ-w-R-y-N-D-h-S-s-s-S-S-c-c-c"
+                                src="/images/trainer-new.png"
                                 alt="Mudassar Hakim"
                                 className="object-cover w-full h-full relative z-10 transition-transform duration-700 group-hover:scale-105"
                                 onError={(e) => {
@@ -44,7 +44,7 @@ export const AboutTrainer = () => {
 
                             {/* Floating Badge */}
                             <div className="absolute bottom-6 left-6 z-30 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl">
-                                <p className="text-white font-medium text-sm">Ex-Delhivery & Western Union</p>
+                                <p className="text-white font-medium text-sm">Amazon, Delhivery, WesternUnion</p>
                             </div>
                         </div>
 
@@ -71,9 +71,6 @@ export const AboutTrainer = () => {
                             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                                 Mudassar Hakim
                             </h2>
-                            <p className="text-xl text-blue-400 font-medium mb-6">
-                                Software Development Manager III at Amazon
-                            </p>
 
                             <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
                                 <p>
@@ -96,11 +93,24 @@ export const AboutTrainer = () => {
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     className="bg-slate-800/50 border border-white/5 p-4 rounded-2xl hover:bg-slate-800/80 transition-colors group"
                                 >
-                                    <div className="bg-blue-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:bg-blue-500/20 transition-colors">
-                                        <stat.icon className="w-5 h-5 text-blue-400" />
-                                    </div>
-                                    <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                                    <div className="text-sm text-gray-400">{stat.label}</div>
+                                    {stat.image ? (
+                                        <div className="h-full flex flex-col items-center justify-center">
+                                            <img
+                                                src={stat.image}
+                                                alt={stat.label}
+                                                className="w-auto h-12 object-contain mb-2"
+                                            />
+                                            <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="bg-blue-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:bg-blue-500/20 transition-colors">
+                                                {stat.icon && <stat.icon className="w-5 h-5 text-blue-400" />}
+                                            </div>
+                                            <div className="text-xl lg:text-2xl font-bold text-white mb-1 leading-tight">{stat.value}</div>
+                                            <div className="text-sm text-gray-400">{stat.label}</div>
+                                        </>
+                                    )}
                                 </motion.div>
                             ))}
                         </div>
