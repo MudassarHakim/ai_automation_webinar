@@ -16,7 +16,7 @@ const items = [
 
 export const AboutTrainer = () => {
     return (
-        <section className="py-24 relative overflow-hidden bg-slate-950">
+        <section className="pt-24 pb-12 relative overflow-hidden bg-slate-950">
             {/* Background Elements */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-900/10 blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-1/3 h-full bg-indigo-900/10 blur-[120px] pointer-events-none" />
@@ -57,7 +57,7 @@ export const AboutTrainer = () => {
                             </h2>
 
                             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
-                                With <strong>18+ years</strong> scaling tech at giants like <strong>Amazon, Delhivery, and Western Union</strong>, I decode the DNA of high-impact engineering. No fluff—just the systems, strategies, and mindset used by the top 1%.
+                                Success isn&apos;t accidental—it&apos;s engineered. Through results-driven mentorship, I bridge the gap between average and elite, helping you master the battle-tested strategies used by the best in the business.
                             </p>
                         </div>
 

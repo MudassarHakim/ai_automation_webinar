@@ -18,6 +18,7 @@ import { Testimonial } from './Testimonial';
 import GradientButton from './ui/GradientButton';
 import { SocialProofPopup } from './SocialProofPopup';
 import { AboutTrainer } from './AboutTrainer';
+import AboutSection2 from './ui/about-section-2';
 
 interface FormData {
   name: string;
@@ -417,6 +418,7 @@ export default function PremiumWebinarLanding() {
       {/* About The Trainer */}
       <div id="about-trainer">
         <AboutTrainer />
+        <AboutSection2 />
       </div>
 
       {/* Testimonials Section */}
