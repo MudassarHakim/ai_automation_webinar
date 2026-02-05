@@ -19,6 +19,7 @@ import GradientButton from './ui/GradientButton';
 import { SocialProofPopup } from './SocialProofPopup';
 import { AboutTrainer } from './AboutTrainer';
 import AboutSection2 from './ui/about-section-2';
+import { LightningBackground } from './ui/LightningBackground';
 
 interface FormData {
   name: string;
@@ -279,8 +280,9 @@ export default function PremiumWebinarLanding() {
       </nav>
 
       {/* Hero Section - Premium Design */}
-      <div className="relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div className="relative overflow-hidden">
+        <LightningBackground />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
           {/* Center Content for more focus */}
           <div className="text-white space-y-8 relative z-10 lg:col-span-2 text-center flex flex-col items-center">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-5 py-2.5 text-sm backdrop-blur-sm">
