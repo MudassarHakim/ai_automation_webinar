@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { TrainerCarousel } from './TrainerCarousel';
 
 const items = [
@@ -15,6 +17,9 @@ const items = [
 ] as const;
 
 export const AboutTrainer = () => {
+    const imgRef = useRef(null);
+    const isInView = useInView(imgRef, { once: false, amount: 0.5 });
+
     return (
         <section className="pt-24 pb-12 relative overflow-hidden bg-slate-950">
             {/* Background Elements */}
@@ -25,13 +30,15 @@ export const AboutTrainer = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
 
                     {/* Left Column: Trainer Image */}
-                    <div className="relative group lg:col-span-1 max-w-sm mx-auto lg:max-w-none">
+                    <div className="relative group lg:col-span-1 max-w-sm mx-auto lg:max-w-none" ref={imgRef}>
                         <div className="aspect-[3/4] rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl bg-slate-900">
                             <div className="absolute inset-0 bg-slate-800 animate-pulse" />
-                            <img
+                            <motion.img
                                 src="/images/trainer-new.png"
                                 alt="Mudassar Hakim"
-                                className="object-cover w-full h-full relative z-10 transition-transform duration-700 group-hover:scale-105"
+                                className="object-cover w-full h-full relative z-10 transition-transform duration-700"
+                                animate={{ scale: isInView ? 1.05 : 1 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
                             />
                             {/* Overlay Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent z-20" />
