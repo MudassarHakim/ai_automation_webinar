@@ -40,7 +40,7 @@ export default function AboutSection2() {
     },
   };
   return (
-    <section className="pt-12 pb-24 px-4 bg-slate-950 min-h-[60vh] text-white">
+    <section className="pt-12 pb-12 px-4 bg-slate-950 text-white">
       <div className="max-w-6xl mx-auto" ref={heroRef}>
         <div className="flex flex-col lg:flex-row items-start gap-8">
           {/* Right side - Content */}
