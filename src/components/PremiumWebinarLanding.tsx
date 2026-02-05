@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import {
   CheckCircle,
   Sparkles,
@@ -17,9 +17,10 @@ import { supabase } from '../lib/supabase';
 import { Testimonial } from './Testimonial';
 import GradientButton from './ui/GradientButton';
 import { SocialProofPopup } from './SocialProofPopup';
-import { AboutTrainer } from './AboutTrainer';
-import AboutSection2 from './ui/about-section-2';
 import { LightningBackground } from './ui/LightningBackground';
+
+const AboutTrainer = lazy(() => import('./AboutTrainer').then(m => ({ default: m.AboutTrainer })));
+const AboutSection2 = lazy(() => import('./ui/about-section-2'));
 
 interface FormData {
   name: string;
@@ -419,8 +420,12 @@ export default function PremiumWebinarLanding() {
 
       {/* About The Trainer */}
       <div id="about-trainer">
-        <AboutTrainer />
-        <AboutSection2 />
+        <Suspense fallback={<div className="h-96 bg-slate-950 animate-pulse" />}>
+          <AboutTrainer />
+        </Suspense>
+        <Suspense fallback={<div className="h-64 bg-slate-950 animate-pulse" />}>
+          <AboutSection2 />
+        </Suspense>
       </div>
 
       {/* Testimonials Section */}

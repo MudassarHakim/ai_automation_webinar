@@ -17,10 +17,19 @@ const Lightning: React.FC<LightningProps> = ({
   size = 1,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isVisible = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
 
     const resizeCanvas = () => {
       canvas.width = canvas.clientWidth;
@@ -155,21 +164,30 @@ const Lightning: React.FC<LightningProps> = ({
     const uSizeLocation = gl.getUniformLocation(program, "uSize");
 
     const startTime = performance.now();
+    let animationFrameId: number;
+
     const render = () => {
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
-      const currentTime = performance.now();
-      gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
-      gl.uniform1f(uHueLocation, hue);
-      gl.uniform1f(uXOffsetLocation, xOffset);
-      gl.uniform1f(uSpeedLocation, speed);
-      gl.uniform1f(uIntensityLocation, intensity);
-      gl.uniform1f(uSizeLocation, size);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
-      requestAnimationFrame(render);
+      if (isVisible.current) {
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
+        const currentTime = performance.now();
+        gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
+        gl.uniform1f(uHueLocation, hue);
+        gl.uniform1f(uXOffsetLocation, xOffset);
+        gl.uniform1f(uSpeedLocation, speed);
+        gl.uniform1f(uIntensityLocation, intensity);
+        gl.uniform1f(uSizeLocation, size);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      }
+      animationFrameId = requestAnimationFrame(render);
     };
-    requestAnimationFrame(render);
-    return () => window.removeEventListener("resize", resizeCanvas);
+    animationFrameId = requestAnimationFrame(render);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId);
+    };
   }, [hue, xOffset, speed, intensity, size]);
 
   return <canvas ref={canvasRef} className="w-full h-full" />;
