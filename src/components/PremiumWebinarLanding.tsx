@@ -94,7 +94,7 @@ export default function PremiumWebinarLanding() {
     }
   }, [isModalOpen]);
 
-  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK";
+  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/DD1F3xbIRx53PfrFhg3yeq";
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};

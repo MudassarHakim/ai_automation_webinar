@@ -26,7 +26,7 @@ export default function WebinarLanding() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK";
+  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/DD1F3xbIRx53PfrFhg3yeq";
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -248,9 +248,8 @@ export default function WebinarLanding() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.name ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="Enter your full name"
                 />
                 {errors.name && (
@@ -268,9 +267,8 @@ export default function WebinarLanding() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.email ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="your.email@example.com"
                 />
                 {errors.email && (
@@ -288,9 +286,8 @@ export default function WebinarLanding() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.phone ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="10-digit mobile number"
                 />
                 {errors.phone && (
