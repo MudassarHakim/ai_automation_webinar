@@ -21,3 +21,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Local/generated files
+bin/
+get.sh
+supabase/.temp/
