@@ -255,8 +255,9 @@ export default function PremiumWebinarLanding() {
             </div>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors font-medium">About</a>
-              <a href="#details" className="text-gray-300 hover:text-white transition-colors font-medium">Details</a>
+              <a href="#paths" className="text-gray-300 hover:text-white transition-colors font-medium">The Choice</a>
+              <a href="#curriculum" className="text-gray-300 hover:text-white transition-colors font-medium">Curriculum</a>
+              <a href="#bonuses" className="text-gray-300 hover:text-white transition-colors font-medium">Bonuses</a>
               <a href="#testimonials" className="text-gray-300 hover:text-white transition-colors font-medium">Reviews</a>
               <GradientButton
                 onClick={() => setIsModalOpen(true)}
@@ -278,8 +279,9 @@ export default function PremiumWebinarLanding() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10 py-6 px-4">
-            <a href="#about" className="block text-gray-300 hover:text-white py-3 font-medium">About</a>
-            <a href="#details" className="block text-gray-300 hover:text-white py-3 font-medium">Details</a>
+            <a href="#paths" className="block text-gray-300 hover:text-white py-3 font-medium">The Choice</a>
+            <a href="#curriculum" className="block text-gray-300 hover:text-white py-3 font-medium">Curriculum</a>
+            <a href="#bonuses" className="block text-gray-300 hover:text-white py-3 font-medium">Bonuses</a>
             <a href="#testimonials" className="block text-gray-300 hover:text-white py-3 font-medium">Reviews</a>
             <GradientButton
               onClick={() => {
@@ -367,7 +369,7 @@ export default function PremiumWebinarLanding() {
       </div>
 
       {/* Fear & Hope: The Industry Shift Section */}
-      <div className="relative py-20 md:py-32 overflow-hidden bg-slate-950">
+      <div id="fear-hope" className="relative py-20 md:py-32 overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -492,7 +494,7 @@ export default function PremiumWebinarLanding() {
       </div>
 
       {/* Market Reality Section */}
-      <div className="relative py-20 md:py-32 bg-slate-950 overflow-hidden">
+      <div id="reality" className="relative py-20 md:py-32 bg-slate-950 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
@@ -514,7 +516,7 @@ export default function PremiumWebinarLanding() {
       </div>
 
       {/* What Becomes Possible Section */}
-      <div className="relative py-20 md:py-32 border-t border-white/10">
+      <div id="outcomes" className="relative py-20 md:py-32 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -559,7 +561,7 @@ export default function PremiumWebinarLanding() {
       </div>
 
       {/* FREE Bonuses Section */}
-      <div className="relative py-20 md:py-32 border-t border-white/10 bg-slate-900/50">
+      <div id="bonuses" className="relative py-20 md:py-32 border-t border-white/10 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -720,7 +722,7 @@ export default function PremiumWebinarLanding() {
       </div>
 
       {/* FAQ Section */}
-      <div className="relative py-20 md:py-32 border-t border-white/10">
+      <div id="faq" className="relative py-20 md:py-32 border-t border-white/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Common Questions</h2>
