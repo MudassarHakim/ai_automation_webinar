@@ -318,7 +318,7 @@ export default function PremiumWebinarLanding() {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl">
-              Prompting is a commodity. Building is a superpower. Discover the exact roadmap to master Agentic AI and ship production-grade systems that automate your work and accelerate your career.
+              Prompting is a commodity. Building is a superpower. Discover the exact roadmap to master Agentic AI, Vibe Coding, MCP and ship production-grade systems that automate your work and accelerate your career.
             </p>
 
             {/* Action Button */}
