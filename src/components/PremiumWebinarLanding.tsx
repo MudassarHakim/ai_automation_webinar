@@ -22,7 +22,10 @@ import {
   Cpu,
   BrainCircuit,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Gift,
+  BookOpen,
+  Wrench
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { Testimonial } from './Testimonial';
@@ -549,6 +552,62 @@ export default function PremiumWebinarLanding() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* FREE Bonuses Section */}
+      <div className="relative py-20 md:py-32 border-t border-white/10 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Get These <span className="text-blue-500">FREE Bonuses</span> When You Join
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              This isn't just a bootcamp. It's a complete toolkit for your success. Reserve your seat now and get instant access to:
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Award className="w-10 h-10 text-blue-400" />,
+                title: "Certificate of Participation",
+                description: "Boost your resume and LinkedIn profile with an official certificate.",
+                gradient: "from-blue-500/10 to-transparent"
+              },
+              {
+                icon: <Wrench className="w-10 h-10 text-purple-400" />,
+                title: "Free AI Tools Directory",
+                description: "A curated list of the best 100% free AI tools for app development.",
+                gradient: "from-purple-500/10 to-transparent"
+              },
+              {
+                icon: <BookOpen className="w-10 h-10 text-green-400" />,
+                title: "Thinking in Systems, Explaining with Clarity",
+                description: "Get my exclusive guide on how to architect complex AI systems and explain them clearly.",
+                link: "https://www.amazon.in/dp/B0GKCD5VFP",
+                gradient: "from-green-500/10 to-transparent"
+              }
+            ].map((bonus, i) => (
+              <div key={i} className="group relative bg-slate-900 border border-white/10 p-10 rounded-3xl hover:border-white/30 transition-all duration-300">
+                <div className="mb-8 p-4 bg-white/5 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300">
+                  {bonus.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{bonus.title}</h3>
+                <p className="text-gray-400 leading-relaxed mb-6">{bonus.description}</p>
+                {bonus.link && (
+                  <a 
+                    href={bonus.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-2 transition-colors"
+                  >
+                    View on Amazon <ArrowRight className="w-4 h-4" />
+                  </a>
+                )}
               </div>
             ))}
           </div>
