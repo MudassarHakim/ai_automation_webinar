@@ -318,7 +318,7 @@ export default function PremiumWebinarLanding() {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl">
-              The world doesn't need more people who can write prompts. It needs builders who can ship production-grade systems. Join us to discover the exact roadmap to move from "using AI" to "building with AI."
+              Prompting is a commodity. Building is a superpower. Discover the exact roadmap to master Agentic AI and ship production-grade systems that automate your work and accelerate your career.
             </p>
 
             {/* Action Button */}
