@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 interface LightningProps {
   hue?: number;
@@ -198,8 +197,10 @@ export const LightningBackground: React.FC<{ hue?: number }> = ({ hue = 220 }) =
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-b from-blue-500/10 to-purple-600/5 blur-3xl" />
-      <div className="absolute top-0 w-full left-1/2 transform -translate-x-1/2 h-full opacity-40">
-        <Lightning hue={hue} speed={1.2} intensity={0.5} size={2.5} />
+      <div className="absolute inset-0 flex items-center justify-center opacity-40">
+        <div className="w-full h-full max-w-[100vw]">
+          <Lightning hue={hue} speed={1.2} intensity={0.5} size={2.5} xOffset={0} />
+        </div>
       </div>
     </div>
   );
