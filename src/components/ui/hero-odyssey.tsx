@@ -330,7 +330,6 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ name, value, position }) => {
 };
 
 export const HeroSection: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // State for the lightning hue
   const [lightningHue, setLightningHue] = useState(220); // Default hue
 

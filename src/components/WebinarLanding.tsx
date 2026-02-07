@@ -81,7 +81,7 @@ export default function WebinarLanding() {
       } else {
         setIsRegistered(true);
       }
-    } catch (err) {
+    } catch {
       setErrors({ submit: 'Something went wrong. Please try again.' });
     } finally {
       setIsSubmitting(false);

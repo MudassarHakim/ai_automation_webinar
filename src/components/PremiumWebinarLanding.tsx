@@ -11,7 +11,18 @@ import {
   Award,
   Rocket,
   Clock,
-  ShieldCheck
+  ShieldCheck,
+  TrendingUp,
+  TrendingDown,
+  AlertTriangle,
+  Lightbulb,
+  HelpCircle,
+  Code2,
+  Terminal,
+  Cpu,
+  BrainCircuit,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { Testimonial } from './Testimonial';
@@ -156,7 +167,7 @@ export default function PremiumWebinarLanding() {
       } else {
         setIsRegistered(true);
       }
-    } catch (err) {
+    } catch {
       setErrors({ submit: 'Something went wrong. Please try again.' });
     } finally {
       setIsSubmitting(false);
@@ -248,7 +259,7 @@ export default function PremiumWebinarLanding() {
                 onClick={() => setIsModalOpen(true)}
                 className="!min-w-[160px]"
               >
-                Register Free
+                Reserve My Free Seat
               </GradientButton>
             </div>
 
@@ -274,8 +285,8 @@ export default function PremiumWebinarLanding() {
               }}
               className="w-full mt-4 !min-w-0"
             >
-              Register Free
-            </GradientButton>
+                Reserve My Free Seat
+              </GradientButton>
           </div>
         )}
       </nav>
@@ -294,15 +305,15 @@ export default function PremiumWebinarLanding() {
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight max-w-4xl">
               <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                AI Won&apos;t Replace You.
+                Stop Being an AI Consumer.
               </span>
               <span className="block mt-3 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                But Builders Who Ship Will.
+                Become an AI Builder.
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
-              Discover how anyone with zero coding understanding can code like experienced engineers using Vibe Coding and Agents to build end-to-end systems that actually ship production-grade apps.
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl">
+              The world doesn't need more people who can write prompts. It needs builders who can ship production-grade systems. Join us to discover the exact roadmap to move from "using AI" to "building with AI."
             </p>
 
             {/* Action Button */}
@@ -335,84 +346,208 @@ export default function PremiumWebinarLanding() {
             <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 pt-12 border-t border-white/10 w-full max-w-3xl">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  120<span className="hidden sm:inline">min</span>
-                  <span className="block sm:hidden text-2xl">min</span>
+                  Path A
                 </div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center uppercase tracking-wider">The Consumer</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Free</div>
-                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center">No Cost</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">VS</div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center uppercase tracking-wider">The Choice</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Live</div>
-                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center">Interactive</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Path B</div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center uppercase tracking-wider">The Builder</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* What You'll Discover Section */}
-      <div id="details" className="relative bg-slate-900/50 backdrop-blur-sm py-20 md:py-32 border-y border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-5 py-2 text-sm backdrop-blur-sm mb-6">
-              <Sparkles className="w-4 h-4 text-blue-400" />
-              <span className="text-blue-300 font-medium">120-Minute Intensive</span>
+      {/* Fear & Hope: The Industry Shift Section */}
+      <div className="relative py-20 md:py-32 overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* The Fear Angle */}
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-full px-5 py-2 text-sm backdrop-blur-sm">
+                <AlertTriangle className="w-4 h-4 text-red-400" />
+                <span className="text-red-300 font-medium">The Market Reality</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                "Software Engineering will be <span className="text-red-500">obsolete</span> in 6-12 months."
+              </h2>
+              <p className="text-xl text-gray-400 leading-relaxed">
+                The headlines are designed to spark fear. And for those who only know how to "code" by rote, the fear is justified. The tools are getting too good, too fast.
+              </p>
+              
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                    <TrendingDown className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-300 font-medium mb-1">Sridhar Vembu (Zoho CEO) recently noted:</p>
+                    <p className="text-gray-400 italic">"We better pay attention... because he has the best coding tool in the world."</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              What You&apos;ll Discover
+
+            {/* The Hope Angle / Image Placeholder */}
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative bg-slate-900 border border-white/10 rounded-3xl p-2 overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                <img 
+                  src="/images/ai-fear-hope.png" 
+                  alt="Tweet about AI replacing software engineering" 
+                  className="w-full h-auto rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              
+              {/* Floating Badge */}
+              <div className="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-2xl shadow-xl border border-blue-400 hidden md:block animate-bounce">
+                <p className="font-bold text-lg leading-tight">Don't Fear Tools.<br/>Master Them.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* The Two Paths Section */}
+      <div id="paths" className="relative py-20 md:py-32 border-y border-white/10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              There Are Two Paths in the AI Era
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Practical insights from building and shipping real AI systems
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Every professional today is standing at a crossroads. Which side of the "AI Divide" will you be on?
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Path A */}
+            <div className="group relative bg-slate-900/80 backdrop-blur-sm border border-red-500/20 rounded-3xl p-8 md:p-12 hover:border-red-500/40 transition-all duration-500">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-1 rounded-full text-sm font-bold tracking-wider uppercase">
+                Path A: The Consumer
+              </div>
+              <div className="space-y-6">
+                <div className="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center border border-red-500/20">
+                  <TrendingDown className="w-8 h-8 text-red-500" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Using AI as a Search Engine</h3>
+                <ul className="space-y-4">
+                  {[
+                    "Copy-pasting prompts from generic lists",
+                    "Limited to what ChatGPT's interface can do",
+                    "Easily replaceable by someone with a better prompt",
+                    "Reacting to tools, not building solutions"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-gray-400">
+                      <X className="w-5 h-5 text-red-500/50 mt-1 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-6 border-t border-white/5">
+                  <p className="text-red-400/80 font-medium italic">Outcome: Stagnation and obsolescence.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Path B */}
+            <div className="group relative bg-blue-900/20 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-8 md:p-12 hover:border-blue-500/50 transition-all duration-500 shadow-2xl shadow-blue-500/10">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 border border-blue-400 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider uppercase shadow-lg shadow-blue-500/50">
+                Path B: The Builder
+              </div>
+              <div className="space-y-6">
+                <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center border border-blue-500/30">
+                  <TrendingUp className="w-8 h-8 text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Using AI as an Operating System</h3>
+                <ul className="space-y-4">
+                  {[
+                    "Building custom agents that work for you",
+                    "Automating complex business workflows",
+                    "Shipping products with \"Vibe Coding\"",
+                    "Indispensable because you solve real problems"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-gray-200">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-6 border-t border-white/5">
+                  <p className="text-blue-400 font-bold italic">Outcome: Career acceleration and new income streams.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Market Reality Section */}
+      <div className="relative py-20 md:py-32 bg-slate-950 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
+              The Reality Check: Prompts Are Common. <br className="hidden md:block" />
+              <span className="text-blue-400">Systems Are Rare.</span>
+            </h2>
+            <div className="max-w-3xl mx-auto space-y-6">
+              <p className="text-xl text-gray-300 leading-relaxed">
+                In 2024, everyone knows how to "ask ChatGPT." That's not a skill anymore—it's a commodity.
+              </p>
+              <div className="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
+                <p className="text-lg text-gray-400 leading-relaxed italic">
+                  "The real value has shifted from knowing how to talk to AI, to knowing how to <span className="text-white font-bold underline decoration-blue-500 underline-offset-4">build systems</span> where AI does the work for you."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* What Becomes Possible Section */}
+      <div className="relative py-20 md:py-32 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              What Becomes Possible When You Build
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Once you master Agentic AI and Vibe Coding, your perspective on work changes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: <Zap className="w-8 h-8" />,
-                title: 'End-to-End System Thinking',
-                description: 'Design complete systems from idea to production, not isolated features that never ship',
-                gradient: 'from-blue-500 to-cyan-500'
+                title: "Launch Side Income",
+                description: "Build and deploy niche SaaS or automation services in days, not months. Ship while others are still prompt-engineering.",
+                color: "blue"
+              },
+              {
+                icon: <Rocket className="w-8 h-8" />,
+                title: "10x Career Growth",
+                description: "Position yourself as the AI Architect in your company. Lead the transition from manual work to autonomous systems.",
+                color: "purple"
               },
               {
                 icon: <Sparkles className="w-8 h-8" />,
-                title: 'Vibe Coding Mastery',
-                description: 'Collaborate with AI effectively without falling into the copy-paste dependency trap',
-                gradient: 'from-purple-500 to-pink-500'
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: 'Agentic AI Workflows',
-                description: 'When and how to use autonomous AI agents in your automation pipelines',
-                gradient: 'from-green-500 to-emerald-500'
-              },
-              {
-                icon: <Clock className="w-8 h-8" />,
-                title: 'Production-Grade Automation',
-                description: 'Real workflows that ship products, not toy demos or tutorial projects',
-                gradient: 'from-orange-500 to-red-500'
-              },
-              {
-                icon: <CheckCircle className="w-8 h-8" />,
-                title: 'Platform Essentials',
-                description: 'Auth, logging, error handling, evaluation - the unglamorous stuff that matters',
-                gradient: 'from-indigo-500 to-blue-500'
-              },
-              {
-                icon: <ArrowRight className="w-8 h-8" />,
-                title: 'Career Positioning',
-                description: 'How to position yourself as a builder who ships, not just someone who knows tools',
-                gradient: 'from-yellow-500 to-orange-500'
+                title: "Total Freedom",
+                description: "Spend your time on strategy and creativity while your custom AI agents handle the repetitive execution tasks.",
+                color: "green"
               }
-            ].map((item, index) => (
-              <div key={index} className="group relative bg-slate-800/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-300 hover:transform hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300" style={{ backgroundImage: `linear - gradient(to bottom right, var(--tw - gradient - stops))` }} />
-                <div className={`inline - flex p - 3 rounded - xl bg - gradient - to - br ${item.gradient} mb - 5`}>
-                  <div className="text-white">{item.icon}</div>
+            ].map((item, i) => (
+              <div key={i} className="group bg-slate-900/50 border border-white/10 p-8 rounded-3xl hover:border-white/30 transition-all duration-300">
+                <div className={`mb-6 text-${item.color}-400 group-hover:scale-110 transition-transform duration-300`}>
+                  {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{item.description}</p>
               </div>
             ))}
@@ -473,6 +608,123 @@ export default function PremiumWebinarLanding() {
               </GradientButton>
             </div>
             <p className="text-gray-400 text-sm mt-4">Limited seats • No credit card required</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Curriculum/Timeline Section */}
+      <div id="curriculum" className="relative py-20 md:py-32 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              The 120-Minute Roadmap
+            </h2>
+            <p className="text-xl text-gray-400">From theory to shipping: No fluff, just results.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                time: "0-30 min",
+                title: "The Architecture",
+                desc: "Understanding Agentic AI vs. Chatbots. Setting up your 'Vibe Coding' environment.",
+                icon: <Terminal className="w-6 h-6 text-blue-400" />
+              },
+              {
+                time: "30-60 min",
+                title: "Building the Brain",
+                desc: "Designing autonomous agents that can reason and execute tasks across tools.",
+                icon: <BrainCircuit className="w-6 h-6 text-purple-400" />
+              },
+              {
+                time: "60-90 min",
+                title: "Vibe Coding Live",
+                desc: "Watch a production app go from idea to deploy in 30 mins using AI orchestration.",
+                icon: <Code2 className="w-6 h-6 text-green-400" />
+              },
+              {
+                time: "90-120 min",
+                title: " Monetization & Scale",
+                desc: "The 'Ship Log' framework: How to find niche problems and solve them with AI.",
+                icon: <Cpu className="w-6 h-6 text-orange-400" />
+              }
+            ].map((step, i) => (
+              <div key={i} className="relative p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-blue-500/30 transition-all">
+                <div className="text-blue-400 text-sm font-bold mb-2">{step.time}</div>
+                <div className="mb-4">{step.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="relative py-20 md:py-32 border-t border-white/10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">Common Questions</h2>
+            <p className="text-gray-400">Everything you need to know before joining.</p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Do I need to be a senior developer?",
+                a: "No. This is for anyone who wants to build. Whether you have 0 coding experience or 10 years, AI is the great equalizer. We focus on 'Vibe Coding' which is more about logic and system design than syntax."
+              },
+              {
+                q: "Is this really free?",
+                a: "Yes. This is a live workshop to help build the community. There are no hidden fees. I want to help 10,000 builders transition into the AI era."
+              },
+              {
+                q: "Will there be a recording?",
+                a: "Recordings are only sent to those who attend live. This is an interactive session with live Q&A, so the best value is in being there."
+              },
+              {
+                q: "What tools will we use?",
+                a: "We'll explore Cursor, Replit Agent, and custom LLM orchestration frameworks. You don't need to install anything beforehand."
+              }
+            ].map((faq, i) => (
+              <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                  <HelpCircle className="w-5 h-5 text-blue-400" />
+                  {faq.q}
+                </h3>
+                <p className="text-gray-400 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Final CTA Section */}
+      <div className="relative py-20 md:py-32 bg-gradient-to-b from-transparent to-blue-900/20 border-t border-white/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
+            Don&apos;t Let the AI Era Pass You By.
+          </h2>
+          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+            The difference between being replaced and becoming indispensable is one decision. Join the builders who are shipping the future.
+          </p>
+          <GradientButton
+            onClick={() => setIsModalOpen(true)}
+            className="h-20 px-12 text-2xl"
+          >
+            Secure Your Free Seat Now
+            <ArrowRight className="w-8 h-8 ml-2" />
+          </GradientButton>
+          <div className="mt-8 flex items-center justify-center gap-6 text-gray-400">
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5" />
+              <span>5,000+ Registered</span>
+            </div>
+            <div className="w-px h-4 bg-white/10" />
+            <div className="flex items-center gap-2">
+              <Award className="w-5 h-5" />
+              <span>Top Rated Workshop</span>
+            </div>
           </div>
         </div>
       </div>
@@ -629,7 +881,7 @@ export default function PremiumWebinarLanding() {
                   </>
                 ) : (
                   <>
-                    Register for Free
+                    Reserve My Free Seat
                     <ArrowRight className="w-5 h-5" />
                   </>
                 )}
@@ -673,7 +925,7 @@ export default function PremiumWebinarLanding() {
                 onClick={() => setIsModalOpen(true)}
                 className="w-full md:w-[240px] h-[56px] text-lg"
               >
-                Register Free
+                Reserve My Free Seat
               </GradientButton>
             </div>
           </div>

@@ -1,6 +1,5 @@
 "use client";
 import { TimelineContent } from "@/components/ui/timeline-animation";
-import { Zap } from "lucide-react";
 import { useRef } from "react";
 
 export default function AboutSection2() {
