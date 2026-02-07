@@ -302,7 +302,7 @@ export default function PremiumWebinarLanding() {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
-              Discover how experienced engineers use AI + Automation to build end-to-end systems that actually ship to production.
+              Discover how anyone with zero coding understanding can code like experienced engineers using Vibe Coding and Agents to build end-to-end systems that actually ship production-grade apps.
             </p>
 
             {/* Action Button */}
