@@ -332,18 +332,21 @@ export default function PremiumWebinarLanding() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-12 pt-12 border-t border-white/10 w-full max-w-3xl">
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 pt-12 border-t border-white/10 w-full max-w-3xl">
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">120min</div>
-                <div className="text-sm text-gray-400 mt-1 font-medium text-center">Live Session</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  120<span className="hidden sm:inline">min</span>
+                  <span className="block sm:hidden text-2xl">min</span>
+                </div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center">Live Session</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Free</div>
-                <div className="text-sm text-gray-400 mt-1 font-medium text-center">No Cost</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Free</div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center">No Cost</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Live</div>
-                <div className="text-sm text-gray-400 mt-1 font-medium text-center">Interactive</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Live</div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-1 font-medium text-center">Interactive</div>
               </div>
             </div>
           </div>
