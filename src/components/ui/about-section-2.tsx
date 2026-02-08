@@ -12,7 +12,7 @@ export default function AboutSection2() {
       transition: {
         delay: i * 0.5,
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       },
     }),
     hidden: {
@@ -29,7 +29,7 @@ export default function AboutSection2() {
       transition: {
         delay: i * 0.4,
         duration: 0.6,
-        ease: "backOut"
+        ease: "backOut" as const
       },
     }),
     hidden: {

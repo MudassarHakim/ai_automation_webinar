@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { TrainerCarousel } from './TrainerCarousel';
 
-const items = [
+const items: Array<{ type: 'image' | 'credential' | 'stat'; content: string; label: string }> = [
     { type: 'stat', content: '/images/aws-certified-new.png', label: 'AWS Architect' },
     { type: 'stat', content: '/images/pmp-certified.png', label: 'PMP Certified' },
     { type: 'stat', content: '/images/harvard-certified.png', label: 'Harvard Certified' },
@@ -14,7 +14,7 @@ const items = [
     { type: 'stat', content: '/images/harvard-certified.png', label: 'Harvard Certified' },
     { type: 'stat', content: '/images/iiitb-alumni.png', label: 'IIITB Alumni' },
     { type: 'stat', content: '/images/gemini-certified-2.png', label: 'Gemini Expert' },
-] as const;
+];
 
 export const AboutTrainer = () => {
     const imgRef = useRef(null);
@@ -74,7 +74,7 @@ export const AboutTrainer = () => {
                             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
                             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
 
-                            <TrainerCarousel items={items as any} />
+                            <TrainerCarousel items={items} />
                         </div>
                     </div>
 

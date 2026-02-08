@@ -15,15 +15,11 @@ import {
   TrendingUp,
   TrendingDown,
   AlertTriangle,
-  Lightbulb,
   HelpCircle,
   Code2,
   Terminal,
   Cpu,
   BrainCircuit,
-  ChevronDown,
-  ChevronUp,
-  Gift,
   BookOpen,
   Wrench
 } from 'lucide-react';
@@ -41,12 +37,14 @@ interface FormData {
   email: string;
   countryCode: string;
   phone: string;
+  profession: string;
 }
 
 interface FormErrors {
   name?: string;
   email?: string;
   phone?: string;
+  profession?: string;
   submit?: string;
 }
 
@@ -55,7 +53,8 @@ export default function PremiumWebinarLanding() {
     name: '',
     email: '',
     countryCode: '+91',
-    phone: ''
+    phone: '',
+    profession: ''
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -138,6 +137,10 @@ export default function PremiumWebinarLanding() {
       }
     }
 
+    if (!formData.profession) {
+      newErrors.profession = 'Please select your profession';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -157,7 +160,8 @@ export default function PremiumWebinarLanding() {
           {
             name: formData.name.trim(),
             email: formData.email.trim().toLowerCase(),
-            phone: `${formData.countryCode} ${formData.phone.trim()}`
+            phone: `${formData.countryCode} ${formData.phone.trim()}`,
+            profession: formData.profession
           }
         ]);
 
@@ -415,6 +419,95 @@ export default function PremiumWebinarLanding() {
                 <p className="font-bold text-lg leading-tight">Don't Fear Tools.<br/>Master Them.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* OpenClaw / Clawdbot Hook Section */}
+      <div id="openclaw-hook" className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-slate-950 via-blue-950/30 to-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-400/30 rounded-full px-5 py-2 text-sm backdrop-blur-sm mb-6">
+              <Zap className="w-4 h-4 text-amber-400" />
+              <span className="text-amber-300 font-medium">This Just Happened</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              An AI Agent Got <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">167,000 GitHub Stars</span> in One Week.
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              It's called <span className="text-white font-bold">OpenClaw</span> (formerly Clawdbot). It runs on your machine. It controls your apps. It talks to you on WhatsApp. And it works <span className="italic">while you sleep</span>.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {[
+              {
+                icon: <Terminal className="w-7 h-7" />,
+                title: "Runs Locally on Your Machine",
+                description: "No cloud dependency. OpenClaw operates directly on macOS, Windows, or Linux -- with full access to your files, apps, and tools.",
+                color: "text-blue-400",
+                borderColor: "border-blue-500/20 hover:border-blue-500/40"
+              },
+              {
+                icon: <BrainCircuit className="w-7 h-7" />,
+                title: "Autonomous Task Execution",
+                description: "It doesn't just answer questions. It sends emails, organizes files, manages calendars, and automates entire workflows on its own.",
+                color: "text-purple-400",
+                borderColor: "border-purple-500/20 hover:border-purple-500/40"
+              },
+              {
+                icon: <Cpu className="w-7 h-7" />,
+                title: "Open-Source & Extensible",
+                description: "Built on Claude, extensible via skills and ClawHub. Anyone can build custom capabilities -- if they know how.",
+                color: "text-green-400",
+                borderColor: "border-green-500/20 hover:border-green-500/40"
+              }
+            ].map((item, i) => (
+              <div key={i} className={`bg-white/5 backdrop-blur-sm border ${item.borderColor} rounded-2xl p-8 transition-all duration-300`}>
+                <div className={`${item.color} mb-5`}>{item.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="relative bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center gap-3">
+                  <AlertTriangle className="w-6 h-6 text-amber-400" />
+                  <p className="text-amber-300 font-bold text-lg">Here's the Wake-Up Call</p>
+                </div>
+                <p className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                  While most people were debating whether AI will "take their jobs," 167,000 developers started building autonomous agents that do the work.
+                </p>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  OpenClaw is just the beginning. The builders who understand how to create, customize, and deploy these systems are writing their own future. The question isn't whether this will happen -- it's whether you'll be ready.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                  <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent mb-2">167K+</div>
+                  <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">Stars in 7 Days</div>
+                  <div className="mt-4 h-px bg-white/10" />
+                  <div className="mt-4 text-3xl font-bold text-white mb-1">26.5K</div>
+                  <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">Forks</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-xl text-gray-300 mb-6">
+              In this webinar, you'll learn the <span className="text-white font-bold">exact skills</span> to build agents like OpenClaw -- not just use them.
+            </p>
+            <GradientButton
+              onClick={() => setIsModalOpen(true)}
+            >
+              Learn to Build, Not Just Consume
+              <ArrowRight className="w-6 h-6" />
+            </GradientButton>
           </div>
         </div>
       </div>
@@ -886,6 +979,44 @@ export default function PremiumWebinarLanding() {
                       <option value="+971">+971 (AE)</option>
                       <option value="+61">+61 (AU)</option>
                       <option value="+65">+65 (SG)</option>
+                      <option value="+49">+49 (DE)</option>
+                      <option value="+33">+33 (FR)</option>
+                      <option value="+81">+81 (JP)</option>
+                      <option value="+86">+86 (CN)</option>
+                      <option value="+82">+82 (KR)</option>
+                      <option value="+55">+55 (BR)</option>
+                      <option value="+7">+7 (RU)</option>
+                      <option value="+27">+27 (ZA)</option>
+                      <option value="+234">+234 (NG)</option>
+                      <option value="+254">+254 (KE)</option>
+                      <option value="+966">+966 (SA)</option>
+                      <option value="+974">+974 (QA)</option>
+                      <option value="+968">+968 (OM)</option>
+                      <option value="+973">+973 (BH)</option>
+                      <option value="+60">+60 (MY)</option>
+                      <option value="+62">+62 (ID)</option>
+                      <option value="+63">+63 (PH)</option>
+                      <option value="+66">+66 (TH)</option>
+                      <option value="+84">+84 (VN)</option>
+                      <option value="+64">+64 (NZ)</option>
+                      <option value="+353">+353 (IE)</option>
+                      <option value="+31">+31 (NL)</option>
+                      <option value="+46">+46 (SE)</option>
+                      <option value="+41">+41 (CH)</option>
+                      <option value="+39">+39 (IT)</option>
+                      <option value="+34">+34 (ES)</option>
+                      <option value="+48">+48 (PL)</option>
+                      <option value="+90">+90 (TR)</option>
+                      <option value="+52">+52 (MX)</option>
+                      <option value="+54">+54 (AR)</option>
+                      <option value="+57">+57 (CO)</option>
+                      <option value="+56">+56 (CL)</option>
+                      <option value="+92">+92 (PK)</option>
+                      <option value="+880">+880 (BD)</option>
+                      <option value="+94">+94 (LK)</option>
+                      <option value="+977">+977 (NP)</option>
+                      <option value="+20">+20 (EG)</option>
+                      <option value="+212">+212 (MA)</option>
                     </select>
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -906,6 +1037,37 @@ export default function PremiumWebinarLanding() {
                 </div>
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1 font-medium">{errors.phone}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="profession" className="block text-sm font-bold text-gray-800 mb-2">
+                  Profession *
+                </label>
+                <div className="relative">
+                  <select
+                    id="profession"
+                    name="profession"
+                    value={formData.profession}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none appearance-none bg-white font-medium text-gray-900 transition-all cursor-pointer ${errors.profession ? 'border-red-500' : 'border-gray-200 hover:border-gray-300'}`}
+                  >
+                    <option value="" disabled>Select your profession</option>
+                    <option value="working_professional">Working Professional</option>
+                    <option value="student">Student</option>
+                    <option value="freelancer">Freelancer / Consultant</option>
+                    <option value="founder">Founder / Entrepreneur</option>
+                    <option value="manager">Engineering Manager / Tech Lead</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+                {errors.profession && (
+                  <p className="text-red-500 text-sm mt-1 font-medium">{errors.profession}</p>
                 )}
               </div>
 
@@ -933,19 +1095,30 @@ export default function PremiumWebinarLanding() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 disabled:from-blue-400 disabled:to-blue-400 text-white font-bold py-5 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:scale-100 flex items-center justify-center gap-3 shadow-lg shadow-blue-500/30 text-lg"
+                className={`rotatingGradient w-full rounded-2xl overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                style={{
+                  '--color-background': '#ffffff',
+                  '--color-background-hover': '#f0f7ff',
+                  '--color-gradient': '#3b82f6',
+                } as React.CSSProperties}
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Registering...
-                  </>
-                ) : (
-                  <>
-                    Reserve My Free Seat
-                    <ArrowRight className="w-5 h-5" />
-                  </>
-                )}
+                <span className="relative z-10 flex items-center justify-center gap-3 text-white font-bold py-5 px-8 w-full"
+                  style={{
+                    background: isSubmitting ? '#93c5fd' : 'linear-gradient(to right, #2563eb, #3b82f6)',
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Registering...
+                    </>
+                  ) : (
+                    <>
+                      Reserve My Free Seat
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
+                </span>
               </button>
 
               <div className="flex items-center justify-center gap-2 pt-2">

@@ -7,7 +7,7 @@ interface TimelineContentProps {
   animationNum: number;
   timelineRef: React.RefObject<HTMLElement | null>;
   customVariants: Variants;
-  as?: any;
+  as?: keyof typeof motion;
   className?: string;
 }
 
@@ -19,7 +19,8 @@ export const TimelineContent = ({
   as = "div",
   className,
 }: TimelineContentProps) => {
-  const Component = (motion as any)[as] || motion.div;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Component = (motion as Record<string, any>)[as] || motion.div;
   const isInView = useInView(timelineRef, { once: false, amount: 0.1 });
 
   return (
