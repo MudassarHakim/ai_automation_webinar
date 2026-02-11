@@ -26,3 +26,11 @@ dist-ssr
 bin/
 get.sh
 supabase/.temp/
+
+# Bolt AI scaffold config
+.bolt/
+
+# Verification/screenshot artifacts (not part of the app)
+verification*.png
+hero_odyssey_verification.png
+openclaw_*.png
