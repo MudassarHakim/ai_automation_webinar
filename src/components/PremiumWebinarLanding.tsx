@@ -48,6 +48,86 @@ interface FormErrors {
   submit?: string;
 }
 
+const fearHopeSlides = [
+  {
+    src: "/images/ai-fear-hope.png",
+    alt: "Headlines predicting software engineering obsolescence",
+    caption: "The headlines are getting louder...",
+    accent: "text-red-400",
+  },
+  {
+    src: "/images/claude-agent-teams.jpg",
+    alt: "Anthropic's Claude Agent Teams building a C compiler from scratch",
+    caption: "16 AI Agents. One C Compiler. Built from scratch.",
+    accent: "text-amber-400",
+  },
+];
+
+function FearHopeCarousel() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % fearHopeSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  return (
+    <div
+      className="relative group"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-amber-500/20 blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="relative bg-slate-900 border border-white/10 rounded-3xl p-2 overflow-hidden shadow-2xl">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-black">
+          {fearHopeSlides.map((slide, index) => (
+            <img
+              key={index}
+              src={slide.src}
+              alt={slide.alt}
+              className={`absolute inset-0 w-full h-full object-cover rounded-2xl transition-all duration-700 ease-in-out ${
+                index === activeSlide
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-105"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Caption Bar */}
+        <div className="mt-2 px-4 py-3 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between gap-3">
+          <p className={`text-sm md:text-base font-semibold ${fearHopeSlides[activeSlide].accent} transition-colors duration-500`}>
+            {fearHopeSlides[activeSlide].caption}
+          </p>
+          <div className="flex gap-2">
+            {fearHopeSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveSlide(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  i === activeSlide
+                    ? "bg-white scale-125"
+                    : "bg-white/30 hover:bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Badge */}
+      <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-red-600 to-amber-600 text-white p-5 rounded-2xl shadow-xl border border-red-400/50 hidden md:block animate-bounce">
+        <p className="font-bold text-base leading-tight">Don't Fear Tools.<br/>Master Them.</p>
+      </div>
+    </div>
+  );
+}
+
 export default function PremiumWebinarLanding() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -403,22 +483,8 @@ export default function PremiumWebinarLanding() {
               </div>
             </div>
 
-            {/* The Hope Angle / Image Placeholder */}
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative bg-slate-900 border border-white/10 rounded-3xl p-2 overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
-                <img 
-                  src="/images/ai-fear-hope.png" 
-                  alt="Tweet about AI replacing software engineering" 
-                  className="w-full h-auto rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-              
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-2xl shadow-xl border border-blue-400 hidden md:block animate-bounce">
-                <p className="font-bold text-lg leading-tight">Don't Fear Tools.<br/>Master Them.</p>
-              </div>
-            </div>
+            {/* Evidence Carousel */}
+            <FearHopeCarousel />
           </div>
         </div>
       </div>
