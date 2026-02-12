@@ -405,6 +405,22 @@ export default function PremiumWebinarLanding() {
               Prompting is a commodity. Building is a superpower. Discover the exact roadmap to master Agentic AI, Vibe Coding, MCP and ship production-grade systems that automate your work and accelerate your career.
             </p>
 
+            {/* Event Details Bar */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm md:text-base">
+              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
+                <Clock className="w-4 h-4 text-blue-400" />
+                <span className="text-gray-200 font-medium">Live Workshop &bull; 120 Minutes</span>
+              </div>
+              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 backdrop-blur-sm">
+                <span className="text-gray-400 line-through text-sm">&#8377;4,999</span>
+                <span className="text-green-400 font-bold text-lg">FREE</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
+                <Users className="w-4 h-4 text-purple-400" />
+                <span className="text-gray-200 font-medium">5,000+ Registered</span>
+              </div>
+            </div>
+
             {/* Action Button */}
             <GradientButton
               onClick={() => setIsModalOpen(true)}
@@ -413,6 +429,16 @@ export default function PremiumWebinarLanding() {
               Reserve My Free Seat
               <ArrowRight className="w-6 h-6" />
             </GradientButton>
+
+            {/* Tool Logos Strip */}
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <span className="text-gray-500 text-xs uppercase tracking-wider font-medium">Tools you'll master:</span>
+              {['Cursor', 'Claude', 'Replit', 'OpenAI', 'LangChain', 'n8n'].map((tool) => (
+                <span key={tool} className="bg-white/5 border border-white/10 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full">
+                  {tool}
+                </span>
+              ))}
+            </div>
 
             {/* Key Points with Icons */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-8 w-full">
@@ -662,7 +688,7 @@ export default function PremiumWebinarLanding() {
             </h2>
             <div className="max-w-3xl mx-auto space-y-6">
               <p className="text-xl text-gray-300 leading-relaxed">
-                In 2024, everyone knows how to "ask ChatGPT." That's not a skill anymore—it's a commodity.
+                In 2026, everyone knows how to "ask ChatGPT." That's not a skill anymore — it's a commodity.
               </p>
               <div className="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
                 <p className="text-lg text-gray-400 leading-relaxed italic">
@@ -670,6 +696,40 @@ export default function PremiumWebinarLanding() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Industry Leaders Quotes */}
+      <div className="relative py-16 md:py-24 border-t border-white/10 bg-slate-950/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-gray-500 text-sm font-medium uppercase tracking-wider mb-10">What industry leaders are saying</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "AI is probably the most important thing humanity has ever worked on.",
+                name: "Sundar Pichai",
+                role: "CEO, Google",
+              },
+              {
+                quote: "The hottest new programming language is English.",
+                name: "Andrej Karpathy",
+                role: "Ex-Tesla AI Director",
+              },
+              {
+                quote: "In a few years, every developer will be an AI-augmented developer.",
+                name: "Satya Nadella",
+                role: "CEO, Microsoft",
+              }
+            ].map((item, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                <p className="text-gray-300 italic leading-relaxed mb-4">"{item.quote}"</p>
+                <div>
+                  <p className="text-white font-semibold text-sm">{item.name}</p>
+                  <p className="text-gray-500 text-xs">{item.role}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -818,6 +878,24 @@ export default function PremiumWebinarLanding() {
             ))}
           </div>
 
+          {/* NOT For You Section - Exclusivity Filter */}
+          <div className="mt-12 max-w-3xl mx-auto">
+            <h3 className="text-xl font-bold text-red-400/80 mb-4 text-center">This is NOT for you if...</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                'You just want another passive lecture to watch',
+                'You\'re looking for "get rich quick" schemes',
+                'You believe AI is a fad that will blow over',
+                'You\'re not willing to invest 2 hours in your future'
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-3 bg-red-500/5 border border-red-500/10 rounded-xl p-4">
+                  <X className="w-5 h-5 text-red-500/50 flex-shrink-0" />
+                  <span className="text-gray-400 text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-16 text-center">
             <div className="flex justify-center">
               <GradientButton
@@ -827,7 +905,10 @@ export default function PremiumWebinarLanding() {
                 <ArrowRight className="w-6 h-6" />
               </GradientButton>
             </div>
-            <p className="text-gray-400 text-sm mt-4">Limited seats • No credit card required</p>
+            <p className="text-gray-400 text-sm mt-4">
+              <span className="text-gray-400 line-through">&#8377;4,999</span>{' '}
+              <span className="text-green-400 font-bold">FREE</span> &bull; Limited seats &bull; No credit card required
+            </p>
           </div>
         </div>
       </div>
@@ -935,7 +1016,12 @@ export default function PremiumWebinarLanding() {
             Secure Your Free Seat Now
             <ArrowRight className="w-8 h-8 ml-2" />
           </GradientButton>
-          <div className="mt-8 flex items-center justify-center gap-6 text-gray-400">
+          <p className="mt-4 text-lg">
+            <span className="text-gray-400 line-through">&#8377;4,999</span>{' '}
+            <span className="text-green-400 font-bold text-xl">FREE</span>
+            <span className="text-gray-500 text-sm ml-2">(for a limited time)</span>
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-6 text-gray-400">
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5" />
               <span>5,000+ Registered</span>
@@ -975,15 +1061,21 @@ export default function PremiumWebinarLanding() {
           <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-10 border border-white/20 w-full max-w-lg animate-in fade-in zoom-in duration-300">
 
             <div className="mb-8">
-              <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                <Users className="w-4 h-4" />
-                <span>last few seats remaining</span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+                  <Users className="w-4 h-4" />
+                  <span>last few seats remaining</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-2 rounded-full text-sm font-bold">
+                  <span className="text-gray-400 line-through text-xs font-normal">&#8377;4,999</span>
+                  <span>FREE</span>
+                </div>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 Reserve Your Seat
               </h2>
               <p className="text-gray-600">
-                Join builders shipping real AI systems
+                Join 5,000+ builders shipping real AI systems
               </p>
             </div>
 
@@ -1215,9 +1307,11 @@ export default function PremiumWebinarLanding() {
                 </div>
               </div>
               <div className="hidden lg:block h-10 w-px bg-white/10" />
-              <p className="hidden lg:block text-gray-400 text-sm max-w-[200px] leading-tight">
-                Join 500+ builders in this intensive AI mastery session.
-              </p>
+              <div className="hidden lg:flex items-center gap-3">
+                <span className="text-gray-500 line-through text-sm">&#8377;4,999</span>
+                <span className="text-green-400 font-bold">FREE</span>
+                <span className="text-gray-500 text-xs">&bull; 5,000+ registered</span>
+              </div>
             </div>
 
             <div className="w-full md:w-auto">
