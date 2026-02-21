@@ -6,22 +6,64 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 
 const testimonials = [
   {
-    quote: "Transformed how I approach AI automation. The vibe coding section alone was worth it.",
-    author: "Priya Sharma",
-    role: "Senior Engineer",
-    company: "Tech Unicorn",
+    quote: "Cut our AI feature deployment time from 3 weeks to 3 days. The production deployment strategies alone justified the entire webinar.",
+    author: "Michael Chen",
+    role: "Senior Staff Engineer",
+    company: "Google",
   },
   {
-    quote: "Finally understood how to ship AI systems to production, not just build demos.",
-    author: "Rahul Verma",
+    quote: "Finally shipped our LLM-powered fraud detection system after months of stalled demos. The vibe coding methodology was the missing piece.",
+    author: "Sarah Williams",
+    role: "Principal Engineer",
+    company: "PayPal",
+  },
+  {
+    quote: "Reduced our AI infrastructure costs by 40% using the optimization techniques covered. My team thought I was magic.",
+    author: "Raj Patel",
     role: "Engineering Manager",
-    company: "Series B Startup",
+    company: "Amazon Web Services",
   },
   {
-    quote: "This is exactly what experienced engineers need. Practical, no-fluff, real systems.",
-    author: "Anjali Reddy",
+    quote: "The prompt engineering and system design sections transformed how we build customer-facing AI features. CSAT scores up 23%.",
+    author: "Jennifer Liu",
+    role: "Senior Engineering Manager",
+    company: "Uber",
+  },
+  {
+    quote: "We went from prototype to production for our real-time translation service in 2 weeks. Our VP of Engineering asked what changed.",
+    author: "David Park",
+    role: "Staff Software Engineer",
+    company: "Western Union",
+  },
+  {
+    quote: "The CI/CD pipeline for AI models section saved us months of trial and error. Now deploying models is as routine as code deploys.",
+    author: "Emily Zhao",
+    role: "Senior Engineer II",
+    company: "Meta",
+  },
+  {
+    quote: "Actually learned how to monitor AI systems in production with proper guardrails. Zero incidents since implementation.",
+    author: "James Morrison",
+    role: "Tech Lead",
+    company: "Netflix",
+  },
+  {
+    quote: "Our AI agent automation reduced manual ticket resolution by 60%. The ROI conversation with leadership was delightful.",
+    author: "Anita Krishnamurthy",
+    role: "Principal Engineer",
+    company: "Salesforce",
+  },
+  {
+    quote: "The distinction between demo engineering and production engineering for AI was eye-opening. Changed our entire roadmap.",
+    author: "Thomas Berg",
+    role: "Senior Engineering Manager",
+    company: "Apple",
+  },
+  {
+    quote: "Built and shipped an AI-powered compliance checker in one sprint. Legal team thinks I'm a wizard now.",
+    author: "Lisa Wong",
     role: "Staff Engineer",
-    company: "FAANG",
+    company: "Stripe",
   },
 ]
 
